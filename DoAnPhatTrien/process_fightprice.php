@@ -23,7 +23,7 @@ if (isset($_POST['product_id']) && isset($_POST['auction-type']) && isset($_POST
     $result = $conn->query($insertReceipt);
     
     if ($result != 0) {
-        header("Location: index.php");
+        header("Location: index.php?page=daugia");
         exit(); // Đảm bảo dừng việc thực hiện script sau khi chuyển hướng
     } else {
         // Xử lý lỗi nếu cần

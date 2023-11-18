@@ -46,7 +46,7 @@
 </style>
 <div class="main-layout" style="background-image: url('image/body_bg.png')">
     <div id="games" class="our">
-        <div class="container">
+        <div class="container"style="margin-top:5%">
             <div class="row">
                 <div class="col-md-12">
                     <div class="titlepage">
@@ -91,13 +91,19 @@
 
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                                 <div class="Games">
-                                    <h3><?php echo $row['ItemName']." - ".$row['Price']; ?></h3>
+                                    <h3><?php echo $row['ItemName']." - ".$row['Price']."$"; ?></h3>
                                     <p><?php echo $row['Description']; ?></p>
                                     <p>Người Bán: <?php echo $row['Username']; ?></p>
                                     <h4 class='remaining-time' data-start-time="<?php echo $currentDays ?>" 
                                     data-end-time="<?php echo $time2day ?>"
                                     data-receipt-id= "<?php echo $row['RecieptID'] ?>"></h4>
-                                    <a onclick="startAuction(<?php echo $row['RecieptID']?>) ">Đấu giá</a>
+            
+                                    <?php
+                                    if(isset($_SESSION['UserID'])){
+                                        
+                                            echo "<a onclick='startAuction(" . $row['RecieptID'] . ")'>Đấu Giá</a>";
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

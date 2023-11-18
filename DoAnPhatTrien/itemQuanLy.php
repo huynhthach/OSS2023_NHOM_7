@@ -5,6 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Item</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            margin:0 auto;
+            margin-top:20%;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body style=" background-image: url('image/body_bg.png')">
 
@@ -18,7 +55,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Hiển thị dữ liệu trong bảng
     echo "<table border='1'>";
-    echo "<tr><th>ItemID</th><th>ItemName</th><th>ItemCategory</th><th>Description</th><th>Image</th><th>Date</th><th>Price</th></tr>";
+    echo "<tr><th>ItemID</th><th>ItemName</th><th>ItemCategory</th><th>Description</th><th>Image</th><th>Date</th><th>Price</th><th>Được bán</th><th>Chức năng</th></tr>";
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
@@ -42,6 +79,7 @@ if ($result->num_rows > 0) {
 // Đóng kết nối
 $conn->close();
 ?>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var checkboxes = document.querySelectorAll(".sellCheckbox");

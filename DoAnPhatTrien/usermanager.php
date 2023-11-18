@@ -19,7 +19,7 @@
 
         table {
             border-collapse: collapse;
-            width: 80%;
+            width: 100%;
             margin: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -64,7 +64,11 @@
     </style>
 </head>
 
-<body style=" background-image: url('image/body_bg.png')">
+<body style=" background-image: url('image/body_bg.png');margin-top:8%">
+    <?php
+    if(isset($_POST['detail']))
+    include "userdetail.php";
+    ?>
     <?php
     include "Config.php";
     include "usersearch.php";    
@@ -78,7 +82,7 @@
     if ($result->num_rows > 0) {
         echo "<table>";
         echo "<tr><th>Image</th><th>Tên người dùng</th><th>Email</th><th>Level</th>
-        <th>Rank</th><th>Số dư</th><th>Win Rate</th><th>Chức năng</th></tr>";
+        <th>Rank</th><th>Số dư</th><th>Win Rate</th><th>Chức năng 1</th><th>Chức năng 2</th></tr>";
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
@@ -90,6 +94,7 @@
                 // Nếu không tồn tại, sử dụng ảnh mặc định
                 echo "<td style='width:50px'><img src='image/default.png' alt='Default Image'></td>";
             }
+            echo "<form method='post' action=''>";
             echo "<td>" . $row['Username'] . "</td>";
             echo "<td>" . $row['Email'] . "</td>";
             echo "<td>" . $row['level'] . "</td>";
@@ -98,10 +103,13 @@
             echo "<td>" . $row['Win'] . "</td>";
             echo "<td class='action-buttons'>";
             echo "<a href='delete_user.php?user_id=".$row['UserID']."'>Xoá</a>";
+            echo "<input type='hidden' name='user_id' value='".$_SESSION['UserID']."'>";
             echo "</td>";
+            echo "<td><input type='submit' name='detail' value='Xem chi tiết' class='buy-button'></td>";
             echo "</tr>";
+            echo "</form>";
         }
-
+        
         echo "</table>";
     } else {
         echo "Không có người dùng nào để hiển thị.";
@@ -109,6 +117,7 @@
 
     $conn->close();
     ?>
+    
 </body>
 
 </html>

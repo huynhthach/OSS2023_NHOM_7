@@ -8,6 +8,7 @@
     <style>
         body{
             background-image: url('image/body_bg.png');
+            padding-top:6%;
         }
 
     </style>
@@ -18,7 +19,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-5 col-lg-6 col-xl-6">
                     <div class="learning_img">
-                        <img src="image/banner_bg.jpg" alt="">
+                        <img src="image/banner_bg.png" alt="">
                     </div>
                 </div>
                 <div class="col-md-7 col-lg-6 col-xl-5">
@@ -27,8 +28,8 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit sed do eiusmod tempor incididunt ut labore et
                             dolore magna aliqua. </p>
-                        <a href="#" class="btn_1">Install Now</a>
-                        <a href="#" class="btn_1">Watch Tutorial</a>
+                        <a href="https://drive.google.com/file/d/1BDOKUN50aqOoYKjkmrVaDKw8395g1DYp/view?usp=sharing" class="btn_1">Install Now</a>
+                        <a href="?page=tintuc" class="btn_1">Watch Tutorial</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +47,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-lg-12">
                         <div class="Latest_War_text">
-                            <a href="#" class="btn_2">Watch Tutorial</a>
+                            <a href="?page=tintuc" class="btn_2">Watch Tutorial</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -121,90 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="gallery_part_item">
-                            <div class="grid">
-                                <div class="grid-sizer"></div>
-                                <a href="image/iamgeItem/Butterfree.png"
-                                    class="grid-item bg_img img-gal grid-item--height-1"
-                                    style="background-image: url('image/iamgeItem/Butterfree.png')">
-                                    <div class="single_gallery_item">
-                                        <div class="single_gallery_item_iner">
-                                            <div class="gallery_item_text">
-                                                <i class="ti-zoom-in"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="image/iamgeItem/pokemon10.png" class="grid-item bg_img img-gal"
-                                    style="background-image: url('image/iamgeItem/pokemon10.png')">
-                                    <div class="single_gallery_item">
-                                        <div class="single_gallery_item_iner">
-                                            <div class="gallery_item_text">
-                                                <i class="ti-zoom-in"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="image/iamgeItem/pokemon7.png" class="grid-item bg_img img-gal"
-                                    style="background-image: url('image/iamgeItem/pokemon7.png')">
-                                    <div class="single_gallery_item">
-                                        <div class="single_gallery_item_iner">
-                                            <div class="gallery_item_text">
-                                                <i class="ti-zoom-in"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="image/iamgeItem/pokemon5.png"
-                                    class="grid-item bg_img img-gal grid-item--height-2"
-                                    style="background-image: url('image/iamgeItem/pokemon5.png')">
-                                    <div class="single_gallery_item">
-                                        <div class="single_gallery_item_iner">
-                                            <div class="gallery_item_text">
-                                                <i class="ti-zoom-in"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="image/iamgeItem/pokemon3.png"
-                                    class="grid-item bg_img img-gal grid-item--height-2"
-                                    style="background-image: url('image/iamgeItem/pokemon3.png')">
-                                    <div class="single_gallery_item">
-                                        <div class="single_gallery_item_iner">
-                                            <div class="gallery_item_text">
-                                                <i class="ti-zoom-in"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="image/iamgeItem/pokemon9.png"
-                                    class="grid-item bg_img img-gal grid-item--width-1"
-                                    style="background-image: url('image/iamgeItem/pokemon9.png')">
-                                    <div class="single_gallery_item">
-                                        <div class="single_gallery_item_iner">
-                                            <div class="gallery_item_text">
-                                                <i class="ti-zoom-in"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="image/iamgeItem/pokemon4.png"
-                                    class="grid-item bg_img img-gal sm_weight  grid-item--height-1"
-                                    style="background-image: url('image/iamgeItem/pokemon4.png')">
-                                    <div class="single_gallery_item">
-                                        <div class="single_gallery_item_iner">
-                                            <div class="gallery_item_text">
-                                                <i class="ti-zoom-in"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </section>
 </body>

@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($insertSql) === TRUE) {
         echo "Thêm mới thành công";
         header("Location: index.php?page=itemQuanLy");
+        exit();
     } else {
         echo "Lỗi: " . $conn->error;
     }

@@ -5,12 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Item</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin:0 auto;
+            margin-top:12%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
-<body>
+
+<body style="background-image: url('image/body_bg.png')">
 
 <?php
 include 'Config.php';
-echo '<a href="?page=itemThem">Thêm vật phẩm</a>';
+
 // Truy vấn cơ sở dữ liệu để lấy thông tin items
 $sql = "SELECT * FROM news";
 $result = $conn->query($sql);
@@ -19,7 +45,8 @@ if ($result->num_rows > 0) {
     // Hiển thị dữ liệu trong bảng
     if ($result->num_rows > 0) {
         echo "<table border='1'>";
-        echo "<tr><th>ID</th><th>Title</th><th>Content</th></tr>";
+        
+        echo "<tr><th>ID</th><th>Title</th><th>Content</th><th>Chức năng</th>/tr>";
     
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";

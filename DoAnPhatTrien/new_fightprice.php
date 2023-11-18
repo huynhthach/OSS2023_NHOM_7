@@ -1,14 +1,11 @@
-<?php
-include('index2.php');
-?>
-<body>
-    <section>
-    <div class="container" style="background-image: url('image/body_bg.png')">
+<body style="background-image: url('image/body_bg.png')">
+    
+    <div class="container" style="background-image: url('image/body_bg.png');margin-top:10%">
         <h1>Your Storage</h2> 
         <?php
         include "Config.php";
-        session_start();
         $ID = $_SESSION['UserID'];
+        
         $query = "SELECT * FROM owneditems JOIN items ON owneditems.ItemID = items.ItemID WHERE OwnerID = '$ID'";
         $query2 = "SELECT * FROM reciept";
         $resultow = $conn->query($query);
@@ -50,6 +47,7 @@ include('index2.php');
         }
         ?>
     </div>
-    </section>
+    
+
 </body>
 </html>

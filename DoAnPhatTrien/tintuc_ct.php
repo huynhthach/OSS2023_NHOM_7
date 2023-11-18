@@ -1,3 +1,14 @@
+<style>
+    textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+</style>
 <?php
 include('index2.php');
 ?>
@@ -23,7 +34,11 @@ include('index2.php');
                   <div class="feature-img">
                      
     <?php
+    if(isset($_GET['id']))
     $new_id = $_GET['id'];
+    else
+    $new_id = $_POST['NewsID'];
+
     include 'Config.php';
     $ID="";
     $query ='SELECT * FROM `news`
@@ -62,9 +77,12 @@ include('index2.php');
                             
                     }
                     if($row["Form"]==2){
-                        echo '<p class="excert">
+                        echo '<div class="quote-wrapper">
+                        <div class="quotes">
                         '.$row["Content"].'
-                        </p>';
+                        </div>
+                     </div>';
+                        
                     }
                     if($row["Form"]==3){
                         echo'
@@ -83,7 +101,7 @@ include('index2.php');
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                    </section>
 
                         ';
                     }
@@ -98,6 +116,85 @@ include('index2.php');
     
 
     ?>
+    <div class="comments-area" style="margin-left:10%;width:50%">
+        <h4 style="color:blue">Comments</h4>
+        <?php
+        include('Config.php');
+        $sql = "SELECT * FROM comment JOIN users ON comment.UserID = users.UserID WHERE comment.NewsID=".$new_id;
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo'<div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                            <div class="thumb">
+                                <img src="image/'.$row["imageus"].'" alt="">
+                            </div>
+                            <div class="desc">
+                                <p class="comment">
+                                    '.$row["Message"].'
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                    <h5>
+                                        <a href="#">'. $row["Username"] .'</a>
+                                    </h5>
+                                    <p class="date">'. $row["Date"] .'</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>';
+            }
+        } else {
+            echo "<tr><td colspan='4'>Không có dữ liệu</td></tr>";
+        }
+        ?>
+        
+        <?php
+    // Kết nối đến cơ sở dữ liệu
+    include('Config.php');
+    // Xử lý form bình luận khi được submit
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Giá trị mặc định hoặc lấy thông tin từ người dùng
+        $newsID = $_POST['NewsID'];
+        $userID = $_POST['UserID'];
+        $message = $_POST["Message"];
+        $date = date("Y-m-d H:i:s"); // Lấy ngày giờ hiện tại
+
+        // Thêm bình luận vào cơ sở dữ liệu
+        $sql = "INSERT INTO comment (NewsID, UserID, Message, Date) VALUES ('$newsID', '$userID', '$message', '$date')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Bình luận đã được thêm thành công!";
+        } else {
+            echo "Lỗi: " . $sql . "<br>" . $conn->error;
+        }
+    }
+
+    // Đóng kết nối đến cơ sở dữ liệu
+    $conn->close();
+    ?>
+    <?php
+        if(isset($_SESSION['UserID']))
+        echo'
+        <form  action="#" id="commentForm" method="post" action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">
+            
+                <input type="hidden" name="NewsID" value="'.$new_id.'">
+                <input type="hidden" name="UserID" value="'.$_SESSION['UserID'].'">
+                <label>Để lại bình luận:</label>
+                <textarea name="Message" rows="4" cols="50" placeholder="Write your comment here..." required></textarea><br>
+                <div class="form-group mt-3">
+                        <button type="submit" value="Submit" class="button button-contactForm btn_1">Send Message <i
+                              class="flaticon-right-arrow"></i> </button>
+                     </div>
+            </form> 
+        ';
+
+    ?>
+    </div>
+    
     <?php
   include 'script.php'
   ?>

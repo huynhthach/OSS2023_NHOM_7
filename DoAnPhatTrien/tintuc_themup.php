@@ -16,12 +16,11 @@ $nameim=basename($_FILES["image"]["name"]);
 if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
     // Tải ảnh lên thành công, tiến hành lưu dữ liệu vào cơ sở dữ liệu
     // $sql = "INSERT INTO images (title, image_path) VALUES ('$title', '$targetFile')";
-    $sql = "INSERT INTO news (NewsID, Title, PublishedDate, AuthorID, CategoryID, image) VALUES (NULL, '$title', NOW(), $IdN, 1, '$nameim')";
+    $sql = "INSERT INTO news (NewsID, Title, PublishedDate, AuthorID, CategoryID, image) VALUES (NULL, '$title', NOW(), $IdND, 1, '$nameim')";
     
     if ($conn->query($sql) === TRUE) {
         echo "Hình ảnh đã được tải lên và lưu vào cơ sở dữ liệu.";
-        header("Location: index.php?page=tintuc");
-    } else {
+        echo "<script>history.go(-2);</script>";
         echo "Lỗi khi thêm dữ liệu vào cơ sở dữ liệu: " . $conn->error;
     }
 } else {

@@ -3,28 +3,32 @@
 <head>
   <title>Trang Chủ</title>
   <style>
-        h2 {
-            color: #333;
-        }
+        .user-info {
+        display: flex;
+        align-items: center;
+    }
 
-        p {
-            margin: 10px 0;
-            color: #555;
-        }
+    h2 {
+        margin-right: 10px; /* Khoảng cách giữa h2 và các thành phần khác */
+        margin-left:2%;
+    }
 
-        .balance {
-            font-weight: bold;
-            color: #27ae60;
-        }
-        a {
-            text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
-            padding: 10px 20px;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
+    .balance {
+        color:#fff; /* Màu chữ xám đậm */
+        margin-right: 20px; /* Khoảng cách giữa balance và LogOut */
+    }
+
+    a {
+        color:crimson; /* Màu chữ xanh dương */
+        text-decoration: none; /* Loại bỏ gạch chân mặc định của đường link */
+        border-bottom: 2px solid transparent; /* Tạo hiệu ứng khi hover */
+        transition: border-bottom 0.3s ease; /* Hiệu ứng chuyển động khi hover */
+        margin-left:2%;
+    }
+
+    a:hover {
+        color:chocolate;
+    }
     </style>
   <?php
   include 'deco.php';
@@ -41,7 +45,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg navbar-light">
-                            <a class="navbar-brand" href="index.php"> <img src="image/arceus-logo.png" style="width:100px" alt="logo"> </a>
+                            <a class="navbar-brand" href="index.php"> <img src="image/arceus-logo2.png" style="width:200px" alt="logo"> </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +65,7 @@
                                             Buy
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="?page=shop"> Shop</a>
+                                            <a class="dropdown-item" href="shop/shop.php"> Shop</a>
                                             <a class="dropdown-item" href="?page=daugia">Auction</a>
                                         </div>
                                     </li>
@@ -79,7 +83,7 @@
                                     <?php
                                     if(isset($_SESSION['UserID']))
                                     echo '<li class="nav-item">
-                                        <a class="nav-link" href="?page=moneycharge">Nạp tiền</a>
+                                        <a class="nav-link" href="?page=moneycharge">MoneyCharge</a>
                                     </li>';
                                     ?>
                                     
@@ -88,7 +92,7 @@
                                         <?php
                                         if(isset($_SESSION['UserID']))
                                         {
-                                            if($_SESSION['UserID']==3){
+                                            if($_SESSION['Role']==2){
                                                 
                                                 echo'<a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown1"
                                                 role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -117,11 +121,11 @@
                                   $SoDu=$_SESSION['SoDu'];
                                   $Quyen=$_SESSION['Role'];
                                 
-                                echo' <div class="user-info">
-                                <h2>'.$Name.'</h2>
-                                <p class="balance">Balance: '.$SoDu.'$</p>
-                                <a href="dangxuat.php">LogOut</a>
-                            </div>';
+                                echo'<div class="user-info">
+                                        <h2>'.$Name.'</h2>
+                                        <p class="balance">Balance: '.$SoDu.'$</p>
+                                        <a href="dangxuat.php">LogOut</a>
+                                    </div>';
                                 }
                                 else
                                 echo '<a href="?page=login">Login</a>
